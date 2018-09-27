@@ -47,6 +47,7 @@ class AStar():
     def iteration(self):
         if self.open:
             node = self.open.pop(0)
+            self.open.sort(key = lambda x: x.getF())
             self.closed.append(node)
         #Should have made a board class
             if node.getString() == "B":
@@ -63,6 +64,7 @@ class AStar():
                     self.attachEval(child, node)
                     if child in self.closed:
                         self.propagateImprovement(child)
+
         else:
             print("No solution for problem")
             return True
